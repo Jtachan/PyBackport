@@ -1,27 +1,30 @@
-site_name: Enigma Cipher
-repo_url: https://github.com/Jtachan/{REPO}
+site_name: PyBackport
+repo_url: https://github.com/Jtachan/PyBackport
 
 nav:
-  - Home: 'index.md'
+  - Home: "index.md"
+  - Backports:
+      - Enum: "enum.md"
+  - Constants:
+      - Colors: "colors.md"
 
 theme:
   name: material
-  # color scheme configuration
-  # changing between light and dark mode is already enabled
-  # available primary colors: https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#primary-color
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: indigo
+      accent: indigo
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/toggle-switch
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
+      primary: black
+      accent: indigo
       toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
+        icon: material/toggle-switch-off
+        name: Switch to system preference
   features:
     - content.code.annotate
     - content.code.copy
@@ -30,9 +33,11 @@ theme:
     - navigation.sections
     - search.suggest
     - search.highlight
+    - navigation.top
+    - navigation.tracking
+    - search.share
+    - search.suggest
 markdown_extensions:
-  # some selected markdown extensions
-  # feel free to add more
   - admonition
   - pymdownx.details
   - pymdownx.superfences
@@ -41,6 +46,7 @@ markdown_extensions:
       permalink: true
 plugins:
   - search
+
 extra:
   version:
     provider: mike # allows deploying versioned documentation for each release

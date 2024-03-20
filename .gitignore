@@ -156,5 +156,4 @@ cython_debug/
 .idea/
 
 # Dev. Files
-check_pkg.bat
-dev_requirements.txt
+*.bat
