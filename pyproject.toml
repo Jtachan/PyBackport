@@ -1,28 +1,26 @@
 [project]
-name = "python-package-template"
+name = "PyBackport"
 authors = [
-    # you can specify multiple authors if required!
-    { name = "YOUR NAME HERE", email = "YOUR.NAME@mail.com" },
+    { name = "Jaime Gonzalez Gomez", email = "jim.gomez.dnn@gmail.com" },
 ]
-description = "CHANGEME"
-urls = { Source = "http://github/ORGANIZATION/REPO.git" }
+description = """
+Python package to backport classes from new python releases (for example,
+enum.StrEnum released in py-3.11), as well as adding some experimental too.
+"""
+urls = { Source = "https://github.com/Jtachan/PyBackport.git" }
 dependencies = [
-    # add all dependencies of your package here
+    # The idea is to keep this package without dependencies
 ]
 requires-python = ">=3.8"
 license = { text = "MIT license" }
 dynamic = ["readme", "version"]
-
-# you can add CLI tools which should be installed when installing the package
-# [project.scripts]
-# cli-command = "pkg_name.module:function"
 
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.dynamic]
-version = { attr = "pkg_name._version.__version__" }
+version = { attr = "py_back._version.__version__" }
 readme = { file = ["README.md"], content-type = "text/markdown" }
 
 [tool.setuptools.packages.find]

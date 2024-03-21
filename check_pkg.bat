@@ -9,7 +9,7 @@ isort %PATHS%
 @echo off
 if %BUILD% equ 1 (
     python -m pip install pip -U
-    pip install -e .
+    pip install .
 )
 @echo on
 
