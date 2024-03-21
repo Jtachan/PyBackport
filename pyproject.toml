@@ -7,7 +7,7 @@ description = """
 Python package to backport classes from new python releases (for example,
 enum.StrEnum released in py-3.11), as well as adding some experimental too.
 """
-urls = { Source = "https://github.com/Jtachan/PyBaseExtension.git" }
+urls = { Source = "https://github.com/Jtachan/PyBackport.git" }
 dependencies = [
     # The idea is to keep this package without dependencies
 ]
