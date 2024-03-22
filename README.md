@@ -1,8 +1,8 @@
 ![tests_badge](https://github.com/Jtachan/PyBackport/actions/workflows/unittests.yml/badge.svg)
 [![PyPI Version](https://img.shields.io/pypi/v/PyBackport)](https://pypi.org/project/PyBackport/)
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue)](https://www.python.org/downloads/) 
-[![PyPI Downloads](https://img.shields.io/pypi/dm/PyBackport)](https://pypi.org/project/PyBackport/) 
 [![MIT License](https://img.shields.io/github/license/Jtachan/PyBackport)](https://github.com/Jtachan/PyBackport/blob/master/LICENSE)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/PyBackport)](https://pypi.org/project/PyBackport/) 
 [![Docs](https://img.shields.io/badge/Read_the_docs-blue)](https://Jtachan.github.io/PyBackport/)
 
 # Python Backport
@@ -31,5 +31,5 @@ pip install git+https://github.com/Jtachan/PyBackport.git@develop
 
 Documentation can be found:
 
-- At the released [mkdocs page](jtachan.github.io/PyBackport).
+- At the released [mkdocs page](https://Jtachan.github.io/PyBackport/).
 - Within the [`docs`](https://github.com/Jtachan/PyBackport/blob/main/docs/index.md) folder.
