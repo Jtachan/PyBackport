@@ -1,4 +1,4 @@
-# Unreleased
+# Release v0.2.0-1 (March 22, 2024)
 
 ---
 
