@@ -1,8 +1,10 @@
-# Release v0.2.0-1 (March 22, 2024)
+# Unreleased
 
 ---
 
-- Defined `CONTRIBUTING.md` and `CHANGELOG.md`
+- Deprecations:
+  - Experimental class `TupleEnum`
+  - Constant values module `colors`
 
 # Release v0.2.0 (March 21, 2024)
 

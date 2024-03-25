@@ -50,12 +50,3 @@ class StrEnum(builtins.str, ReprEnum):
     def _generate_next_value_(name, start, count, last_values):
         """Return the lower-cased version of the member name."""
         return name.lower()
-
-
-class TupleEnum(builtins.tuple, ReprEnum):
-    """Enum where members are also (and must be) tuples."""
-
-    @staticmethod
-    def _generate_next_value_(name, start, count, last_values):
-        """Raises NotImplementedError is 'auto' is used."""
-        raise NotImplementedError("TupleEnum does not support using 'auto()'")

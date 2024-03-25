@@ -5,8 +5,6 @@ nav:
   - Home: "index.md"
   - Backports:
       - Enum: "enum.md"
-  - Constants:
-      - Colors: "colors.md"
 
 theme:
   name: material

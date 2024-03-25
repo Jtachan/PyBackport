@@ -21,12 +21,6 @@ class Animal(enum.StrEnum):
     """Supported original 'StrEnum' for python versions < 3.11"""
     CAT = enum.auto()
     DOG = "dog"
-
-
-class Color(enum.TupleEnum):
-    """Experimental 'TupleEnum' class"""
-    BLACK = (0, 0, 0)
-    WHITE = (255, 255, 255)
 ```
 
 ## Installation
@@ -61,10 +55,4 @@ pip install git+https://github.com/Jtachan/PyBackport.git@develop
 
 ---
 ## Modules index
-- **All modules**
-    - [enum](enum.md)
-    - [colors](colors.md)
-- **Backports**
-    - [enum](enum.md#backported-classes)
-- **Experimental**
-    - [enum](enum.md#experimental-classes)
+  - [enum](enum.md)

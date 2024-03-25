@@ -45,17 +45,3 @@ def test_str_enum():
         "cat",
         "platypus",
     ], "Formatting not working"
-
-
-def test_tuple_enum():
-    """Testing py_back.enum.TupleEnum"""
-
-    class Color(enum.TupleEnum):
-        WHITE = (255, 255, 255)
-        BLACK = (0, 0, 0)
-
-    for c in Color:
-        assert isinstance(c, tuple), "Type not defined correctly"
-        assert c[0] in c, "tuple functions are not working"
-
-    assert list(Color) == [(255, 255, 255), (0, 0, 0)], "Formatting not working"
