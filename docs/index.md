@@ -61,10 +61,4 @@ pip install git+https://github.com/Jtachan/PyBackport.git@develop
 
 ---
 ## Modules index
-- **All modules**
-    - [enum](enum.md)
-    - [colors](colors.md)
-- **Backports**
-    - [enum](enum.md#backported-classes)
-- **Experimental**
-    - [enum](enum.md#experimental-classes)
+  - [enum](enum.md)
