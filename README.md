@@ -7,10 +7,17 @@
 
 # Python Backport
 
-The `py_back` modules serve the next purposes:
+The `py_back` modules serve the next purposes of importing features from newer python releases into older versions.
 
-* Enable the use of new base classes in older Python versions. For example, `enum.StrEnum` is new in Python 3.11, but `py_back` allows users on previous versions to use it too.
-* Enable experimental classes not implemented in other modules. For example, `enum.TupleEnum` is not implemented in `enum`, but `py_back` allows users to create enumerations where its members are tuples.
+For example, `enum.StrEnum` is new in Python 3.11, but `py_back` allows users to use it on previous versions.
+
+```python
+from py_back import enum
+
+class Animal(enum.StrEnum):
+    DOG = "dog"
+    CAT = "cat"
+```
 
 
 ## Setup

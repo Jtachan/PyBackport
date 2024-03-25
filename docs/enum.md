@@ -16,12 +16,6 @@ class Animal(enum.StrEnum):
     """Supported original 'StrEnum' for python versions < 3.11"""
     CAT = enum.auto()
     DOG = "dog"
-
-
-class Color(enum.TupleEnum):
-    """Experimental 'TupleEnum' class"""
-    BLACK = (0, 0, 0)
-    WHITE = (255, 255, 255)
 ```
 
 ---
@@ -72,25 +66,3 @@ IntFlag is the same as Flag, but its members are also integers and can be used a
 
 _ReprEnum_ uses the repr() of Enum, but the str() of the mixed-in data type.
 The class is used for any builtin type enum.
-
----
-## Experimental classes
-
-### _enum._**TupleEnum**
-
-_TupleEnum_ is the same as [_Enum_](https://docs.python.org/3.12/library/enum.html#enum.Enum), but its members are also tuples and can be used anywhere as tuples can be used.
-
-```pycon
->>> from py_back import enum
->>> class Color(enum.TupleEnum):
-...    """Experimental 'TupleEnum' class"""
-...    BLACK = (0, 0, 0)
-...    WHITE = (255, 255, 255)
-...
->>> Color.BLACK
-(0, 0, 0)
->>> list(Color.WHITE)
-[255, 255, 255]
-```
-
-**Note**: Using [`auto`](https://docs.python.org/3.12/library/enum.html#enum.auto) is not supported by _TupleEnum_, and it will raise a `NotImplementedError`.

@@ -21,12 +21,6 @@ class Animal(enum.StrEnum):
     """Supported original 'StrEnum' for python versions < 3.11"""
     CAT = enum.auto()
     DOG = "dog"
-
-
-class Color(enum.TupleEnum):
-    """Experimental 'TupleEnum' class"""
-    BLACK = (0, 0, 0)
-    WHITE = (255, 255, 255)
 ```
 
 ## Installation

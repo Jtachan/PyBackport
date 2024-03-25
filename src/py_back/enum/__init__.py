@@ -9,8 +9,7 @@ __all__ = [
     "auto",
     "unique",
     "StrEnum",
-    "TupleEnum",
 ]
 from enum import Enum, Flag, auto, unique
 
-from ._types import IntEnum, IntFlag, StrEnum, TupleEnum
+from ._types import IntEnum, IntFlag, StrEnum
