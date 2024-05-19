@@ -3,10 +3,7 @@ name = "PyBackport"
 authors = [
     { name = "Jaime Gonzalez Gomez", email = "jim.gomez.dnn@gmail.com" },
 ]
-description = """
-Python package to backport classes from new python releases (for example,
-enum.StrEnum released in py-3.11), as well as adding some experimental too.
-"""
+description = "Python package to backport classes from new python releases."
 urls = { Source = "https://github.com/Jtachan/PyBackport.git" }
 dependencies = [
     # The idea is to keep this package without dependencies
@@ -14,6 +11,14 @@ dependencies = [
 requires-python = ">=3.8"
 license = { text = "MIT license" }
 dynamic = ["readme", "version"]
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
 
 [build-system]
 requires = ["setuptools"]

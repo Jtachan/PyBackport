@@ -1,4 +1,4 @@
-"""New and experimental enum types."""
+"""Backported enum types."""
 import builtins
 import enum
 
