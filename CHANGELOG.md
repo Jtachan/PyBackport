@@ -5,6 +5,8 @@
 - Deprecations:
   - Experimental class `TupleEnum`
   - Constant values module `colors`
+- v0.2.0-2:
+  - Backported builtins str & dict functionalities from python 3.9
 
 # Release v0.2.0 (March 21, 2024)
 
