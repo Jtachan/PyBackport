@@ -36,11 +36,12 @@ class str(builtins.str):
     ---------
     Py 3.9
         str.removeprefix(prefix, /)
+        str.removesuffix(suffix, /)
     """
     def removeprefix(self, prefix) -> str:
         """
         If the string starts with the prefix string, return string[len(prefix):].
-        Otherwise, return a copy of the original string:
+        Otherwise, return a copy of the original string.
         """
         if prefix == self[:len(prefix)]:
             return self[len(prefix):]
