@@ -1,16 +1,18 @@
 """Backported enum types."""
+
 import builtins
 import enum
 import sys
 import warnings
-
 from enum import auto
 
 __all__ = ["auto", "IntEnum"]
 
 if sys.version_info >= (3, 11):
-
-    from enum import StrEnum, EnumCheck, ReprEnum, FlagBoundary, property, member, nonmember, global_enum, show_flag_values
+    from enum import (
+        ReprEnum,
+        StrEnum,
+    )
 
     warnings.warn(
         "Using the following classes from the standard library: "
@@ -19,6 +21,7 @@ if sys.version_info >= (3, 11):
     )
 
 else:
+
     class ReprEnum(enum.Enum):
         """Updates 'repr', leaving 'str' and 'format' to the builtin class."""
 
@@ -28,41 +31,36 @@ else:
         def __format__(self, format_spec):
             return self.value.__format__(format_spec)
 
-
     class IntEnum(ReprEnum, enum.IntEnum):
         """Enum where members are also (and must be) ints."""
 
-
     class IntFlag(ReprEnum, enum.IntFlag):
         """Support for integer-based Flags."""
-
 
     class StrEnum(builtins.str, ReprEnum):
         """Enum where members are also (and must be) strings."""
 
         def __new__(cls, *values):
             """Method copied from original enum.StrEnum code.
-            Values must already be of type `str`."""
+            Values must already be of type `str`.
+            """
             if len(values) > 3:
                 raise TypeError(f"Too many arguments for str(): {values}")
-            if len(values) == 1:
-                # it must be a string
-                if not isinstance(values[0], str):
-                    raise TypeError(f"{values[0]} is not a string")
-            if len(values) >= 2:
+            if len(values) == 1 and not isinstance(values[0], str):
+                # Must be a string.
+                raise TypeError(f"{values[0]} is not a string")
+            if len(values) >= 2 and not isinstance(values[1], str):
                 # check that encoding argument is a string
-                if not isinstance(values[1], str):
-                    raise TypeError(f"Encoding must be a string, not {values[1]}")
-            if len(values) == 3:
+                raise TypeError(f"Encoding must be a string, not {values[1]}")
+            if len(values) == 3 and not isinstance(values[2], str):
                 # check that errors argument is a string
-                if not isinstance(values[2], str):
-                    raise TypeError(f"Errors must be a string, not {values[2]}")
+                raise TypeError(f"Errors must be a string, not {values[2]}")
             value = str(*values)
-            member = str.__new__(cls, value)
-            member._value_ = value
-            return member
+            new_member = str.__new__(cls, value)
+            new_member._value_ = value
+            return new_member
 
         @staticmethod
-        def _generate_next_value_(name, start, count, last_values):
+        def _generate_next_value_(name: str, *_) -> str:
             """Return the lower-cased version of the member name."""
             return name.lower()

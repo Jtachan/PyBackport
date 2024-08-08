@@ -1,10 +1,12 @@
-"""Backported builtins functionalities"""
+"""Backported builtins functionalities."""
+
 from __future__ import annotations
+
 import builtins
 
 
 class dict(builtins.dict):
-    """
+    """Backport for 'dict' class.
     dict() -> new empty dictionary
     dict(mapping) -> new dictionary initialized from a mapping object's
         (key, value) pairs
@@ -21,14 +23,15 @@ class dict(builtins.dict):
         d | other
         d |= other
     """
-    def __or__(self, other: builtins.dict):
+
+    def __or__(self, other: builtins.dict) -> dict:
         d = self.copy()
         d.update(other)
         return d
 
 
 class str(builtins.str):
-    """
+    """Backport for 'str' class.
     str(object='') -> str
     str(bytes_or_buffer[, encoding[, errors]]) -> str
 
@@ -38,13 +41,14 @@ class str(builtins.str):
         str.removeprefix(prefix, /)
         str.removesuffix(suffix, /)
     """
+
     def removeprefix(self, prefix) -> str:
         """
         If the string starts with the prefix string, return string[len(prefix):].
         Otherwise, return a copy of the original string.
         """
-        if prefix == self[:len(prefix)]:
-            return self[len(prefix):]
+        if prefix == self[: len(prefix)]:
+            return self[len(prefix) :]
         return self
 
     def removesuffix(self, suffix) -> str:
@@ -52,6 +56,6 @@ class str(builtins.str):
         If the string ends with the suffix string and that suffix is not empty,
         return string[:-len(suffix)]. Otherwise, return a copy of the original string.
         """
-        if suffix == self[-len(suffix):]:
-            return self[:-len(suffix)]
+        if suffix == self[-len(suffix) :]:
+            return self[: -len(suffix)]
         return self
