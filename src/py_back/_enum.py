@@ -1,4 +1,5 @@
 """Backported enum types."""
+from __future__ import annotations
 
 import builtins
 import enum
@@ -6,18 +7,15 @@ import sys
 import warnings
 from enum import auto
 
-__all__ = ["auto", "IntEnum"]
+__all__ = ["auto", "IntEnum", "ReprEnum", "IntFlag"]
 
 if sys.version_info >= (3, 11):
-    from enum import (
-        ReprEnum,
-        StrEnum,
-    )
+    from enum import IntEnum, IntFlag, ReprEnum, StrEnum
 
     warnings.warn(
         "Using the following classes from the standard library: "
-        "StrEnum, EnumCheck, ReprEnum, FlagBoundary, property, member, nonmember, "
-        "global_enum, show_flag_values\n"
+        "ReprEnum, StrEnum, IntEnum, IntFlag\n",
+        stacklevel=2
     )
 
 else:
@@ -25,10 +23,12 @@ else:
     class ReprEnum(enum.Enum):
         """Updates 'repr', leaving 'str' and 'format' to the builtin class."""
 
-        def __str__(self):
+        def __str__(self) -> str:
+            """String through the builtin class."""
             return self.value.__str__()
 
-        def __format__(self, format_spec):
+        def __format__(self, format_spec: str) -> str:
+            """Format through the builtin class."""
             return self.value.__format__(format_spec)
 
     class IntEnum(ReprEnum, enum.IntEnum):
@@ -40,8 +40,10 @@ else:
     class StrEnum(builtins.str, ReprEnum):
         """Enum where members are also (and must be) strings."""
 
-        def __new__(cls, *values):
-            """Method copied from original enum.StrEnum code.
+        def __new__(cls, *values) -> StrEnum:
+            """Create new StrEnum.
+
+            Method copied from original enum.StrEnum code.
             Values must already be of type `str`.
             """
             if len(values) > 3:

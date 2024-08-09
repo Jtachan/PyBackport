@@ -5,8 +5,9 @@ from __future__ import annotations
 import builtins
 
 
-class dict(builtins.dict):
+class dict(builtins.dict):  # noqa: A001, N801
     """Backport for 'dict' class.
+
     dict() -> new empty dictionary
     dict(mapping) -> new dictionary initialized from a mapping object's
         (key, value) pairs
@@ -30,8 +31,9 @@ class dict(builtins.dict):
         return d
 
 
-class str(builtins.str):
+class str(builtins.str):  # noqa: A001, N801
     """Backport for 'str' class.
+
     str(object='') -> str
     str(bytes_or_buffer[, encoding[, errors]]) -> str
 
@@ -42,8 +44,9 @@ class str(builtins.str):
         str.removesuffix(suffix, /)
     """
 
-    def removeprefix(self, prefix) -> str:
-        """
+    def removeprefix(self, prefix: str) -> str:
+        """Backport logic to remove prefix from str.
+
         If the string starts with the prefix string, return string[len(prefix):].
         Otherwise, return a copy of the original string.
         """
@@ -51,8 +54,9 @@ class str(builtins.str):
             return self[len(prefix) :]
         return self
 
-    def removesuffix(self, suffix) -> str:
-        """
+    def removesuffix(self, suffix: str) -> str:
+        """Backport logic to remove suffix from str.
+
         If the string ends with the suffix string and that suffix is not empty,
         return string[:-len(suffix)]. Otherwise, return a copy of the original string.
         """

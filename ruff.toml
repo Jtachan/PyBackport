@@ -39,6 +39,9 @@ select = [
 ]
 
 ignore = [
+    "ANN002",  # missing-type-args
+    "ANN003",  # missing-type-kwargs
+    "D401",    # non-imperative-mood
     "PLR2004", # magic-value-comparison
     "PLW1641", # eq-without-hash
     "PLR6301", # no-self-use
