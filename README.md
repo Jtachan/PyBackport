@@ -28,11 +28,6 @@ Install the package via pip.
 pip install PyBackport
 ```
 
-The latest changes on develop can be installed via pip + git:
-```shell
-pip install git+https://github.com/Jtachan/PyBackport.git@develop
-```
-
 ## 📖 Documentation
 
 Documentation can be found:

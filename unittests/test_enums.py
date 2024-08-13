@@ -3,10 +3,11 @@ from py_back import enum
 
 
 def test_repr_enum():
-    """
+    """Tests for enum representations.
+
     Testing behaviors in existing enums that were modified in newer python releases,
-    due to the creation of ReprEnum.
-    The used classes are obtained from the documentation examples.
+    due to the creation of ReprEnum. The used classes are obtained from the
+    documentation examples.
     """
 
     class Color(enum.IntFlag):
@@ -29,7 +30,7 @@ def test_repr_enum():
 
 
 def test_str_enum():
-    """Testing py_back.enum.StrEnum"""
+    """Testing py_back.enum.StrEnum."""
 
     class Animal(enum.StrEnum):
         DOG = enum.auto()
