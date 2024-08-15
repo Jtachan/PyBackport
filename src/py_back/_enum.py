@@ -25,11 +25,10 @@ if sys.version_info >= (3, 11):
     warnings.warn(
         "Using the following classes from the standard library: "
         "IntEnum, IntFlag, ReprEnum, StrEnum, EnumType\n",
-        stacklevel=2
+        stacklevel=2,
     )
 
 else:
-
     EnumType = EnumMeta
 
     class ReprEnum(enum.Enum):
