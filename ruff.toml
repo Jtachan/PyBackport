@@ -54,7 +54,6 @@ ignore = [
     "PLR0911", # too-many-return-statements
     "PLR0915", # too-many-statements
     "PLW0120", # useless-else-on-loop
-    "E501",    # line-too-long -> the formatter handles this for us
     "ANN101",  # missing-type-self -> type checkers figure this out automatically
     "ANN102",  # missing-type-cls -> type checkers figure this out automatically
     "TRY003",  # raise-vanilla-args -> we want to create our own message for certain exceptions

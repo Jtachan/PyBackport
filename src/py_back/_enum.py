@@ -5,20 +5,32 @@ import builtins
 import enum
 import sys
 import warnings
-from enum import auto
+from enum import Enum, EnumMeta, Flag, auto, unique
 
-__all__ = ["auto", "IntEnum", "ReprEnum", "IntFlag"]
+__all__ = [
+    "auto",
+    "IntEnum",
+    "ReprEnum",
+    "IntFlag",
+    "EnumMeta",
+    "Enum",
+    "EnumType",
+    "unique",
+    "Flag",
+]
 
 if sys.version_info >= (3, 11):
-    from enum import IntEnum, IntFlag, ReprEnum, StrEnum
+    from enum import EnumType, IntEnum, IntFlag, ReprEnum, StrEnum
 
     warnings.warn(
         "Using the following classes from the standard library: "
-        "ReprEnum, StrEnum, IntEnum, IntFlag\n",
+        "IntEnum, IntFlag, ReprEnum, StrEnum, EnumType\n",
         stacklevel=2
     )
 
 else:
+
+    EnumType = EnumMeta
 
     class ReprEnum(enum.Enum):
         """Updates 'repr', leaving 'str' and 'format' to the builtin class."""
