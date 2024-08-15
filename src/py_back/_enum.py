@@ -32,13 +32,17 @@ else:
             return self.value.__format__(format_spec)
 
     class IntEnum(ReprEnum, enum.IntEnum):
-        """Enum where members are also (and must be) ints."""
+        """Enum where members are also (and must be) ints.
+        Backported from py3.11 leaving the str & format to the builtin class.
+        """
 
     class IntFlag(ReprEnum, enum.IntFlag):
-        """Support for integer-based Flags."""
+        """Support for integer-based Flags.
+        Backported from py3.11 leaving the str & format to the builtin class.
+        """
 
     class StrEnum(builtins.str, ReprEnum):
-        """Enum where members are also (and must be) strings."""
+        """Enum where members are also (and must be) strings. Backported from py3.11."""
 
         def __new__(cls, *values) -> StrEnum:
             """Create new StrEnum.
