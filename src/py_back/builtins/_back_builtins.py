@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import builtins
 
+__all__ = ["dict", "str"]
+
 
 class dict(builtins.dict):  # noqa: A001, N801
     """Backport for 'dict' class.
@@ -26,6 +28,7 @@ class dict(builtins.dict):  # noqa: A001, N801
     """
 
     def __or__(self, other: builtins.dict) -> dict:
+        """Return self|other, which is equivalent to self.update(other)."""
         d = self.copy()
         d.update(other)
         return d
