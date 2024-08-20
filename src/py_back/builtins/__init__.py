@@ -2,7 +2,7 @@
 
 import sys
 import warnings
-from builtins import *
+from builtins import *  # noqa: F403
 
 __all__ = [name for name in dir() if not name.startswith("_")]
 
@@ -12,4 +12,4 @@ if sys.version_info >= (3, 9):
         stacklevel=2,
     )
 else:
-    from ._back_builtins import dict, str
+    from ._back_builtins import dict, str  # noqa: F401
