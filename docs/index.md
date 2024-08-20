@@ -47,12 +47,6 @@ Alternatively, any pip-install-git command can be called over the repository.
 pip install git+https://github.com/Jtachan/PyBackport.git
 ```
 
-Latest unreleased changes are also installable by installing the develop branch. Before doing so, consider that they might be breaking changes.
-
-```commandline
-pip install git+https://github.com/Jtachan/PyBackport.git@develop
-```
-
 ---
 ## Modules index
   - [enum](enum.md)
