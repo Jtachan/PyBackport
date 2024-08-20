@@ -4,8 +4,9 @@ backported.
 
 from __future__ import annotations
 
-from py_back import builtins
 import enum
+
+from py_back import builtins
 
 __all__ = ["IntEnum", "ReprEnum", "IntFlag", "EnumType", "StrEnum"]
 
