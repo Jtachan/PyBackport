@@ -22,7 +22,9 @@ if sys.version_info >= (3, 11):
 
     warnings.warn(
         "Importing from the standard enum library: "
-        "EnumType, IntEnum, IntFlag, ReprEnum, StrEnum\n",
+        "EnumType, IntEnum, IntFlag, ReprEnum, StrEnum\n"
+        "Consider 'from enum import ...' instead of 'from py_back.enum "
+        "import ...'",
         stacklevel=2,
     )
 else:
