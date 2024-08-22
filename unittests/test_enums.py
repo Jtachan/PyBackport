@@ -1,7 +1,28 @@
 """Test the 'enums' module."""
 import sys
+import warnings
 
 import pytest
+
+
+def test_import_warnings():
+    """Checking the warning is printed for all versions that don't backport
+    the classes.
+    """
+    with warnings.catch_warnings(record=True) as w:
+        warnings.simplefilter("always")
+        from py_back import enum  # noqa: F401
+
+        if sys.version_info >= (3, 11):
+            match_text = (
+                "Consider 'from enum import ...' instead of 'from py_back.enum "
+                "import ...'"
+            )
+            assert len(w) == 1, "Expected a warning but none was raised"
+            assert issubclass(w[-1].category, UserWarning)
+            assert match_text in str(w[-1].message)
+        else:
+            assert len(w) == 0
 
 
 @pytest.mark.skipif(
@@ -14,19 +35,19 @@ def test_repr_enum():
     due to the creation of ReprEnum. The used classes are obtained from the
     documentation examples.
     """
-    from py_back import enum
+    from py_back.enum import IntEnum, IntFlag, auto
 
-    class Color(enum.IntFlag):
-        RED = enum.auto()
-        GREEN = enum.auto()
+    class Color(IntFlag):
+        RED = auto()
+        GREEN = auto()
 
     assert Color.RED & 2 is Color(0)
     assert repr(Color.RED | 2) in ("<Color.RED|GREEN: 3>", "<Color.GREEN|RED: 3>")
     assert str(Color.RED) == "1"
 
-    class Number(enum.IntEnum):
+    class Number(IntEnum):
         ONE = 1
-        TWO = enum.auto()
+        TWO = auto()
         THREE = 3
 
     assert Number.TWO == 2
