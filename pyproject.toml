@@ -5,21 +5,26 @@ authors = [
 ]
 description = "Python package to backport classes from new python releases."
 urls = { Source = "https://github.com/Jtachan/PyBackport.git" }
-requires-python = ">=3.8"
+requires-python = ">=3.7"
 license = { text = "MIT license" }
 dynamic = ["readme", "version"]
 classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 
 #[project.dependencies]
 ## Add the dependency with a conditional marker
 #tomli = { version = "*", python = "<3.11" }
+
+[project.optional-dependencies]
+dev = ["ruff", "pytest"]
 
 [build-system]
 requires = ["setuptools"]

@@ -19,19 +19,20 @@ class Animal(enum.StrEnum):
 ```
 
 ---
-## Backported classes
 
-### [_enum._**IntEnum**](https://docs.python.org/3/library/enum.html#enum.IntEnum)
+## [_enum._**IntEnum**](https://docs.python.org/3/library/enum.html#enum.IntEnum)
+
+> Backported from version 3.11: `str()` and `format()`
 
 _IntEnum_ is the same as _Enum_, but its members are also integers and can be used anywhere that an integer can be used.
 
-**Backported from version 3.11**: 
-[`__str__()`](https://docs.python.org/3/reference/datamodel.html#object.__str__) is now `int.__str__()` to better support the replacement of existing constants use-case.
+> **Note:** [`__str__()`](https://docs.python.org/3/reference/datamodel.html#object.__str__) is now `int.__str__()` to better support the replacement of existing constants use-case.
 [`__format__()`](https://docs.python.org/3/reference/datamodel.html#object.__format__) was already `int.__format__()` for that same reason.
 
-### [_enum._**StrEnum**](https://docs.python.org/3.11/library/enum.html#enum.StrEnum)
+## [_enum._**StrEnum**](https://docs.python.org/3.11/library/enum.html#enum.StrEnum)
 
-**Backported from version 3.11**<br/>
+> Backported from version 3.11
+
 _StrEnum_ is the same as [_Enum_](https://docs.python.org/3.12/library/enum.html#enum.Enum), but its members are also strings and can be used in most of the same places that a string can be used.
 
 ```pycon
@@ -54,15 +55,18 @@ True
 
 **Note**: Using [`auto`](https://docs.python.org/3.12/library/enum.html#enum.auto) results in the lower-cased member name as the value.
 
-### [_enum._**IntFlag**](https://docs.python.org/3/library/enum.html#enum.IntFlag)
+## [_enum._**IntFlag**](https://docs.python.org/3/library/enum.html#enum.IntFlag)
+
+> Backported from version 3.11: `str()` and `format()`
 
 IntFlag is the same as Flag, but its members are also integers and can be used anywhere that an integer can be used.
 
-**Backported from version 3.11**: 
-[`__str__()`](https://docs.python.org/3/reference/datamodel.html#object.__str__) is now `int.__str__()` to better support the replacement of existing constants use-case.
+> **None:** [`__str__()`](https://docs.python.org/3/reference/datamodel.html#object.__str__) is now `int.__str__()` to better support the replacement of existing constants use-case.
 [`__format__()`](https://docs.python.org/3/reference/datamodel.html#object.__format__) was already `int.__format__()` for that same reason.
 
-### [_enum._**ReprEnum**](https://docs.python.org/3/library/enum.html#enum.ReprEnum)
+## [_enum._**ReprEnum**](https://docs.python.org/3/library/enum.html#enum.ReprEnum)
+
+> Backported from version 3.11
 
 _ReprEnum_ uses the repr() of Enum, but the str() of the mixed-in data type.
 The class is used for any builtin type enum.

@@ -66,4 +66,4 @@ ignore = [
 "unittests/*.py" = ["ANN"] # annotations in pytest test cases are not needed
 
 [lint.pydocstyle]
-convention = "numpy" # we use numpy style docstrings at smartmicro
+convention = "numpy"
