@@ -1,4 +1,5 @@
 """Test the 'enums' module."""
+
 import sys
 import warnings
 
