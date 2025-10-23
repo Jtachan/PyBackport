@@ -1,6 +1,4 @@
-"""Backported enum types. Each class defines from which python version it was
-backported.
-"""
+"""Backported enum types. Each class defines from which python version it was backported."""
 
 from __future__ import annotations
 
@@ -8,7 +6,7 @@ import enum
 
 from py_back import builtins
 
-__all__ = ["IntEnum", "ReprEnum", "IntFlag", "EnumType", "StrEnum"]
+__all__ = ["EnumType", "IntEnum", "IntFlag", "ReprEnum", "StrEnum"]
 
 # New in Python 3.11
 EnumType = enum.EnumMeta
@@ -16,6 +14,7 @@ EnumType = enum.EnumMeta
 
 class ReprEnum(enum.Enum):
     """Updates 'repr', leaving 'str' and 'format' to the builtin class.
+
     Backported from py3.11.
     """
 
@@ -30,18 +29,23 @@ class ReprEnum(enum.Enum):
 
 class IntEnum(ReprEnum, enum.IntEnum):
     """Enum where members are also (and must be) ints.
+
     Backported from py3.11 leaving the str & format to the builtin class.
     """
 
 
 class IntFlag(ReprEnum, enum.IntFlag):
     """Support for integer-based Flags.
+
     Backported from py3.11 leaving the str & format to the builtin class.
     """
 
 
 class StrEnum(builtins.str, ReprEnum):
-    """Enum where members are also (and must be) strings. Backported from py3.11."""
+    """Enum where members are also (and must be) strings.
+
+    Backported from py3.11.
+    """
 
     def __new__(cls, *values) -> StrEnum:
         """Create new StrEnum.
