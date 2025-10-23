@@ -35,4 +35,4 @@ jobs:
           uv sync
           uv pip install -r tests/requirements.txt
       - name: Run tests
-        run: uv run pytest unittests
+        run: uv run pytest tests
