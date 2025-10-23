@@ -1,7 +1,7 @@
 [project]
 name = "PyBackport"
 authors = [
-    { name = "Jaime Gonzalez Gomez", email = "jim.gomez.dnn@gmail.com" },
+    { name = "Jaime Gonzalez Gomez", email = "jgonzg@proton.me" },
 ]
 description = "Python package to backport classes from new python releases."
 urls = { Source = "https://github.com/Jtachan/PyBackport.git" }
@@ -23,20 +23,13 @@ classifiers = [
 ## Add the dependency with a conditional marker
 #tomli = { version = "*", python = "<3.11" }
 
-[project.optional-dependencies]
-dev = ["ruff", "pytest"]
-
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.dynamic]
-version = { attr = "py_back._version.__version__" }
+version = { attr = "py_back.__version__" }
 readme = { file = ["README.md"], content-type = "text/markdown" }
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[tool.isort]
-profile = "black"
-src_paths = ["src", "unittests"]
