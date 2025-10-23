@@ -14,4 +14,4 @@ if sys.version_info >= (3, 9):
         stacklevel=2,
     )
 else:
-    from ._back_builtins import dict, str  # noqa: F401
+    from ._back_builtins import dict, str  # noqa: F401, A004

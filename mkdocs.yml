@@ -4,6 +4,7 @@ repo_url: https://github.com/Jtachan/PyBackport
 nav:
   - Home: "index.md"
   - Backports:
+      - Builtins: "builtins.md"
       - Enum: "enum.md"
 
 theme:
@@ -47,4 +48,4 @@ plugins:
 
 extra:
   version:
-    provider: mike # allows deploying versioned documentation for each release
+    provider: mike

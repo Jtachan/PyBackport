@@ -7,18 +7,13 @@ import pytest
 
 
 def test_import_warnings():
-    """Checking the warning is printed for all versions that don't backport
-    the classes.
-    """
+    """Checking the warning is printed for all versions that don't backport the classes."""
     with warnings.catch_warnings(record=True) as w:
         warnings.simplefilter("always")
         from py_back import builtins  # noqa: F401
 
         if sys.version_info >= (3, 9):
-            match_text = (
-                "Consider 'from builtins import ...' instead of 'from py_back.builtins "
-                "import ...'"
-            )
+            match_text = "Consider 'from builtins import ...' instead of 'from py_back.builtins import ...'"
             assert len(w) == 1, "Expected a warning but none was raised"
             assert issubclass(w[-1].category, UserWarning)
             assert match_text in str(w[-1].message)
@@ -26,9 +21,7 @@ def test_import_warnings():
             assert len(w) == 0
 
 
-@pytest.mark.skipif(
-    sys.version_info >= (3, 9), reason="Features included at python 3.9"
-)
+@pytest.mark.skipif(sys.version_info >= (3, 9), reason="Features included at python 3.9")
 def test_backported_str():
     """Here are tested all methods backported for the 'str' class."""
     from py_back.builtins import str
@@ -45,9 +38,7 @@ def test_backported_str():
     assert str("TmpDirMixin").removesuffix("Tests") == "TmpDirMixin"
 
 
-@pytest.mark.skipif(
-    sys.version_info >= (3, 9), reason="Features included at python 3.9"
-)
+@pytest.mark.skipif(sys.version_info >= (3, 9), reason="Features included at python 3.9")
 def test_backported_dict():
     """Here are tested all methods backported for the 'str' class."""
     from py_back.builtins import dict

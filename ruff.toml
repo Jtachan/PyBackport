@@ -1,69 +1,77 @@
+output-format = "concise"
+line-length = 120
+
+[format]
+docstring-code-format = true
+skip-magic-trailing-comma = true
+
 [lint]
-# enable some checks
+preview = true
 select = [
-    # mandatory
-    "PL", # pylint checks
-    "F",  # Pyflake (flake8) checks
-    "B",  # flake8-bugbear checks
-    "I",  # isort checks
-
-    # a selected list of extra checks that you should probably use as well
-    "D",   # pydocstyle checks
-    "W",   # pycodestyle warnings
-    "E",   # pycodestyle errors
-    "N",   # pep8-naming
-    "ANN", # flake8-annotations (typing)
-    "BLE", # flake8-blind-except
-    "A",   # flake8-builtins
-    "C4",  # flake8-comprehensions
-    "T10", # flake8-debugger
-    "FA",  # flake8-future-annotations
-    "ISC", # flake8-implicit-str-concat
-    "ICN", # flake8-import-conventions
-    "G",   # flake8-logging-format
-    "PIE", # flake8-pie
-    "PT",  # flake8-pytest-style
-    "Q",   # flake8-quotes
-    "RET", # flake8-raise
-    "SIM", # flake8-simplify
-    "TCH", # flake8-type-checking
-    "ARG", # flake8-unused-arguments
-    "PTH", # flake8-use-pathlib
-    "TRY", # tryceratops
-    "NPY", # NumPy-specific rules
-    "LOG", # flake8-logging
-    "RUF", # Ruff-specific rules
-
-    # some interesting but harsh lint options
-    "T20", # flake8-print (do not allow print statements to enforce using logging)
+    "A",    # flake8-builtins
+    "ANN",  # flake8-annotations
+    "ARG",  # flake8-unused-arguments
+    "B",    # flake8-bugbear
+    "BLE",  # flake8-blind-except
+    "C4",   # flake8-comprehensions
+    "D",    # pydocstyle
+    "E",    # pycodestyle error
+    "F",    # Pyflakes
+    "FA",   # flake8-future-annotations
+    "I",    # isort
+    "ICN",  # flake8-import-conventions
+    "ISC",  # flake8-implicit-str-concat
+    "N",    # pep8-naming
+    "NPY",  # NumPy-specific rules
+    "PD",   # pandas-vet
+    "PIE",  # flake8-pie
+    "PL",   # pylint
+    "PT",   # flakeru8-pytest
+    "RET",  # flake8-return
+    "RUF",  # Ruff-specific rules
+    "SIM",  # flake8-simplify
+    "TC",   # flake8-type-checking
+    "W",    # pycodestyle warning
 ]
-
 ignore = [
-    "ANN002",  # missing-type-args
-    "ANN003",  # missing-type-kwargs
-    "D205",    # blank-line-after-summary
-    "D401",    # non-imperative-mood
-    "PLR2004", # magic-value-comparison
-    "PLW1641", # eq-without-hash
-    "PLR6301", # no-self-use
-    "PLR0913", # too-many-arguments
-    "PLR0904", # too-many-public-methods
-    "PLR0916", # too-many-boolean-expressions
-    "PLR0912", # too-many-branches
-    "PLR0904", # too-many-public-methods
-    "PLR0911", # too-many-return-statements
-    "PLR0915", # too-many-statements
-    "PLW0120", # useless-else-on-loop
-    "ANN101",  # missing-type-self -> type checkers figure this out automatically
-    "ANN102",  # missing-type-cls -> type checkers figure this out automatically
-    "TRY003",  # raise-vanilla-args -> we want to create our own message for certain exceptions
-    "RET505",  # superfluous-else-return -> extra "else" helps to show the programmers intention that this code belongs to the previous "if"
-    "RET506",  # superfluous-else-raise -> extra "else" helps to show the programmers intention that this code belongs to the previous "if"
-    "ISC001",  # ruff warns that this rule might conflict with the auto-formatting
+    "ANN002",   # missing type for *args
+    "ANN003",   # missing type for **kwargs
+    "D401",     # first line in docstring as imperative mood
+    "PLR6301",  # no-self-use
+    "PLR0913",  # too-many-arguments
+    "PLR0904",  # too-many-public-methods
+    "PLR0916",  # too-many-boolean-expressions
+    "PLR0912",  # too-many-branches
+    "PLR0904",  # too-many-public-methods
+    "PLR0911",  # too-many-return-statements
+    "PLR0914",  # too-many-local-variables
+    "PLR0915",  # too-many-statements
+    "PLR0917",  # too-many-positional-arguments
+    "PLC1901",  # compare-to-empty-string
+    "PLR2004",  # magic-value-comparison
 ]
 
 [lint.per-file-ignores]
-"unittests/*.py" = ["ANN"] # annotations in pytest test cases are not needed
+"tests/*" = [
+    "A004","PLC0415",
+]
+
+[lint.flake8-annotations]
+allow-star-arg-any = true
+mypy-init-return = true
+suppress-none-returning = true
+
+[lint.flake8-unused-arguments]
+ignore-variadic-names = true
+
+[lint.isort]
+split-on-trailing-comma=false
+
+[lint.pycodestyle]
+ignore-overlong-task-comments = true
 
 [lint.pydocstyle]
 convention = "numpy"
+
+[lint.pylint]
+max-args = 10
