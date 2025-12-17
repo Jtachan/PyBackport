@@ -61,7 +61,7 @@ True
 
 IntFlag is the same as Flag, but its members are also integers and can be used anywhere that an integer can be used.
 
-> **None:** [`__str__()`](https://docs.python.org/3/reference/datamodel.html#object.__str__) is now `int.__str__()` to better support the replacement of existing constants use-case.
+> **Note:** [`__str__()`](https://docs.python.org/3/reference/datamodel.html#object.__str__) is now `int.__str__()` to better support the replacement of existing constants use-case.
 [`__format__()`](https://docs.python.org/3/reference/datamodel.html#object.__format__) was already `int.__format__()` for that same reason.
 
 ## [_enum._**ReprEnum**](https://docs.python.org/3/library/enum.html#enum.ReprEnum)

@@ -46,7 +46,3 @@ Alternatively, any pip-install-git command can be called over the repository.
 ```commandline
 pip install git+https://github.com/Jtachan/PyBackport.git
 ```
-
----
-## Modules index
-  - [enum](enum.md)
