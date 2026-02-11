@@ -45,7 +45,38 @@ markdown_extensions:
       permalink: true
 plugins:
   - search
-
-extra:
-  version:
-    provider: mike
+  - autorefs
+  - mkdocstrings:
+     handlers:
+       python: # https://mkdocstrings.github.io/python/usage/
+         options:
+           # General options
+           show_bases: true
+           show_source: false
+           # Headings
+           heading_level: 1
+           parameter_headings: true
+           show_root_heading: true
+           show_root_full_path: true
+           show_root_members_full_path: false
+           show_category_heading: false
+           # Members
+           inherited_members: true
+           members_order: source
+           filters:
+             - "!^_.*$"
+           group_by_category: true
+           show_submodules: true
+           # Docstrings
+           docstring_style: numpy
+           docstring_section_style: table
+           merge_init_into_class: true
+           # Signatures
+           annotations_path: source
+           line_length: 88
+           modernize_annotations: true
+           overloads_only: true
+           show_signature: true
+           show_signature_annotations: true
+           separate_signature: true
+           show_overloads: true
