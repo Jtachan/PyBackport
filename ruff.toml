@@ -59,9 +59,11 @@ ignore = [
 ]
 "src/**/builtins/*" = [
   "A001",  # Builtin variable shadowing
+  "A004",  # Shadowing a Python builtin through import
   "N801",  # Invalid class name (not CamelCase)
 ]
 "src/**/__init__.py" = [
+  "F401",  # Imported but unused (false positive)
   "F403",  # Unable to detect undefined names wiht `from ... import *`
   "F405",  # Unable to detect (un)defined names due to `from ... import *`
 ]
