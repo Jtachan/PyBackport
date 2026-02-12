@@ -1,42 +1,29 @@
-"""Backported enum types.
-
-All enumerations can be imported just like the ones provided by python.
-```python
-from py_back import enum
-
-class Number(enum.IntEnum):
-    \"\"\"Enumeration using the original 'IntEnum' call\"\"\"
-    ONE = enum.auto()
-    TWO = 2
-
-
-class Animal(enum.StrEnum):
-    \"\"\"Supported original 'StrEnum' for python versions < 3.11\"\"\"
-    CAT = enum.auto()
-    DOG = "dog"
-```
-
-Importing the `py_back.enum` module ensures that only the required classes are
-backported.
-"""
+"""Module to backport 'enum' classes depending on the system python."""
 
 from __future__ import annotations
 
 import enum
+import sys
 
 from py_back import builtins
 
 # New in Python 3.11
-EnumType = enum.EnumMeta
+if sys.version_info < (3, 11):
+    EnumType = enum.EnumMeta
+else:
+    EnumType = enum.EnumType
 
 
-class ReprEnum(enum.Enum):
+class ReprEnum(EnumType):
     """Updates `repr`, leaving `str` and `format` to the builtin class.
 
-    _ReprEnum_ uses the repr() of Enum, but the str() of the mixed-in data type.
+    `ReprEnum` uses the `repr()` of Enum, but the `str()` of the mixed-in data type.
     The class is used for any builtin type enum.
 
-    Backported from Python 3.11.
+    Backports
+    ---------
+    **Python 3.11**:
+        The class was first defined.
     """
 
     def __str__(self) -> str:
@@ -56,7 +43,7 @@ class IntEnum(ReprEnum, enum.IntEnum):
 
     Backports
     ---------
-    Python 3.11:
+    **Python 3.11**:
         Class inherits from `ReprEnum` to leave the `str()` and `format()` to
         the builtin class.
 
@@ -78,7 +65,7 @@ class IntFlag(ReprEnum, enum.IntFlag):
 
     Backports
     ---------
-    Python 3.11:
+    **Python 3.11**:
         Class inherits from `ReprEnum` to leave the `str()` and `format()` to
         the builtin class.
 
