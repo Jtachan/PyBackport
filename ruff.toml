@@ -54,8 +54,7 @@ ignore = [
 
 [lint.per-file-ignores]
 "tests/*" = [
-  "A004",
-  "PLC0415",
+  "A004",  # Shadowing builtins name
 ]
 "src/**/builtins/*" = [
   "A001",  # Builtin variable shadowing

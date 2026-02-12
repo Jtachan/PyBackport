@@ -2,11 +2,11 @@
 
 import sys
 
+from py_back.builtins import dict, str
+
 
 def test_backported_str():
     """Here are tested all methods backported for the 'str' class."""
-    from py_back.builtins import str
-
     old_str = "Hello world!"
 
     if sys.version_info < (3, 9):
@@ -22,8 +22,6 @@ def test_backported_str():
 
 def test_backported_dict():
     """Here are tested all methods backported for the 'str' class."""
-    from py_back.builtins import dict
-
     my_dict = dict({"a": 1, "b": 2})
     result = my_dict | {"c": 3}
     assert my_dict == {"a": 1, "b": 2}

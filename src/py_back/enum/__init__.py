@@ -38,4 +38,6 @@ __all__ = [
 from enum import *
 
 if sys.version_info < (3, 11):
-    from ._back_enum import EnumType, IntEnum, IntFlag, ReprEnum, StrEnum
+    from ._back_enum import IntEnum, IntFlag, ReprEnum, StrEnum
+
+    EnumType = EnumMeta

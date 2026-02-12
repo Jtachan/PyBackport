@@ -2,19 +2,12 @@
 
 from __future__ import annotations
 
-import enum
-import sys
+import enum as _enum
 
-from py_back import builtins
-
-# New in Python 3.11
-if sys.version_info < (3, 11):
-    EnumType = enum.EnumMeta
-else:
-    EnumType = enum.EnumType
+from ..builtins import str as _str
 
 
-class ReprEnum(EnumType):
+class ReprEnum(_enum.Enum):
     """Updates `repr`, leaving `str` and `format` to the builtin class.
 
     `ReprEnum` uses the `repr()` of Enum, but the `str()` of the mixed-in data type.
@@ -35,7 +28,7 @@ class ReprEnum(EnumType):
         return self.value.__format__(format_spec)
 
 
-class IntEnum(ReprEnum, enum.IntEnum):
+class IntEnum(ReprEnum, _enum.IntEnum):
     """Enum where members are also (and must be) ints.
 
     `IntEnum` is the same as `Enum`, but its members are also integers and
@@ -57,7 +50,7 @@ class IntEnum(ReprEnum, enum.IntEnum):
     """
 
 
-class IntFlag(ReprEnum, enum.IntFlag):
+class IntFlag(ReprEnum, _enum.IntFlag):
     """Support for integer-based Flags.
 
     IntFlag is the same as Flag, but its members are also integers and can be
@@ -79,7 +72,7 @@ class IntFlag(ReprEnum, enum.IntFlag):
     """
 
 
-class StrEnum(builtins.str, ReprEnum):
+class StrEnum(_str, ReprEnum):
     """Enum where members are also (and must be) strings.
 
     `StrEnum` is the same as
