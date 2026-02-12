@@ -1,21 +1,22 @@
-"""Backported enum types. Each class defines from which python version it was backported."""
+"""Module to backport 'enum' classes depending on the system python."""
 
 from __future__ import annotations
 
-import enum
+import enum as _enum
 
-from py_back import builtins
-
-__all__ = ["EnumType", "IntEnum", "IntFlag", "ReprEnum", "StrEnum"]
-
-# New in Python 3.11
-EnumType = enum.EnumMeta
+from ..builtins import str as _str
 
 
-class ReprEnum(enum.Enum):
-    """Updates 'repr', leaving 'str' and 'format' to the builtin class.
+class ReprEnum(_enum.Enum):
+    """Updates `repr`, leaving `str` and `format` to the builtin class.
 
-    Backported from py3.11.
+    `ReprEnum` uses the `repr()` of Enum, but the `str()` of the mixed-in data type.
+    The class is used for any builtin type enum.
+
+    Backports
+    ---------
+    **Python 3.11**:
+        The class was first defined.
     """
 
     def __str__(self) -> str:
@@ -27,24 +28,82 @@ class ReprEnum(enum.Enum):
         return self.value.__format__(format_spec)
 
 
-class IntEnum(ReprEnum, enum.IntEnum):
+class IntEnum(ReprEnum, _enum.IntEnum):
     """Enum where members are also (and must be) ints.
 
-    Backported from py3.11 leaving the str & format to the builtin class.
+    `IntEnum` is the same as `Enum`, but its members are also integers and
+    can be used anywhere that an integer can be used.
+
+    Backports
+    ---------
+    **Python 3.11**:
+        Class inherits from `ReprEnum` to leave the `str()` and `format()` to
+        the builtin class.
+
+    Notes
+    -----
+    [`__str__()`](https://docs.python.org/3/reference/datamodel.html#object.__str__)
+    is now `int.__str__()` to better support the replacement of existing
+    constants use-case.
+    [`__format__()`](https://docs.python.org/3/reference/datamodel.html#object.__format__)
+    was already `int.__format__()` for that same reason.
     """
 
 
-class IntFlag(ReprEnum, enum.IntFlag):
+class IntFlag(ReprEnum, _enum.IntFlag):
     """Support for integer-based Flags.
 
-    Backported from py3.11 leaving the str & format to the builtin class.
+    IntFlag is the same as Flag, but its members are also integers and can be
+    used anywhere that an integer can be used.
+
+    Backports
+    ---------
+    **Python 3.11**:
+        Class inherits from `ReprEnum` to leave the `str()` and `format()` to
+        the builtin class.
+
+    Notes
+    -----
+    [`__str__()`](https://docs.python.org/3/reference/datamodel.html#object.__str__)
+    is now `int.__str__()` to better support the replacement of existing
+    constants use-case.
+    [`__format__()`](https://docs.python.org/3/reference/datamodel.html#object.__format__)
+    was already `int.__format__()` for that same reason.
     """
 
 
-class StrEnum(builtins.str, ReprEnum):
+class StrEnum(_str, ReprEnum):
     """Enum where members are also (and must be) strings.
 
-    Backported from py3.11.
+    `StrEnum` is the same as
+    [`Enum`](https://docs.python.org/3.12/library/enum.html#enum.Enum), but
+    its members are also strings and can be used in most of the same places
+    that a string can be used.
+
+    Examples
+    --------
+    ```pycon
+    >>> from py_back import enum
+    >>> class Animal(enum.StrEnum):
+    ...    CAT = enum.auto()
+    ...    DOG = "dog"
+    ...
+    >>> Animal.CAT
+    cat
+    >>> Animal.DOG.title()
+    'Dog'
+    >>> Animal.CAT == "cat"
+    True
+    >>> Animal.CAT + Animal.DOG
+    'catdog'
+    >>> " and ".join(list(Animals))
+    'cat and dog'
+    ```
+
+    Notes
+    -----
+    Using [`auto`](https://docs.python.org/3.12/library/enum.html#enum.auto)
+    results in the lower-cased member name as the value.
     """
 
     def __new__(cls, *values) -> StrEnum:
