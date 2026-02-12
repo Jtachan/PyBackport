@@ -18,9 +18,10 @@ Hello world
 """
 
 import sys
-from builtins import *
 
-__all__ = ["str", "dict"] + list({name for name in dir() if not name.startswith("_")})
+__all__ = ["dict", "str"]
+
+from builtins import *
 
 if sys.version_info < (3, 9):
     from ._back_builtins import dict, str

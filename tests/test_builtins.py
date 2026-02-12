@@ -1,5 +1,7 @@
 """Test the 'builtins' module."""
 
+import sys
+
 
 def test_backported_str():
     """Here are tested all methods backported for the 'str' class."""
@@ -7,8 +9,9 @@ def test_backported_str():
 
     old_str = "Hello world!"
 
-    for backported_method in ("removeprefix", "removesuffix"):
-        assert hasattr(old_str, backported_method) is False
+    if sys.version_info < (3, 9):
+        for backported_method in ("removeprefix", "removesuffix"):
+            assert hasattr(old_str, backported_method) is False
 
     assert str("TestHook").removeprefix("Test") == "Hook"
     assert str("BaseTestCase").removeprefix("Test") == "BaseTestCase"
