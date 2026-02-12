@@ -5,7 +5,7 @@
 _Python Backport_ main goal is to backport functionalities from newer python releases.
 It allows using its modules just as the original ones, with the only difference at the import.
 
-Any backported (or experimental) functionality can be imported with the module `py_back`.
+Any backported functionality can be imported with the module `py_back`.
 
 ```python
 from py_back import enum
@@ -46,7 +46,3 @@ Alternatively, any pip-install-git command can be called over the repository.
 ```commandline
 pip install git+https://github.com/Jtachan/PyBackport.git
 ```
-
----
-## Modules index
-  - [enum](enum.md)

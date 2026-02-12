@@ -1,5 +1,5 @@
 output-format = "concise"
-line-length = 120
+line-length = 88
 
 [format]
 docstring-code-format = true
@@ -49,11 +49,22 @@ ignore = [
     "PLR0917",  # too-many-positional-arguments
     "PLC1901",  # compare-to-empty-string
     "PLR2004",  # magic-value-comparison
+    "RUF067",  # non empty init module
 ]
 
 [lint.per-file-ignores]
 "tests/*" = [
-    "A004","PLC0415",
+  "A004",  # Shadowing builtins name
+]
+"src/**/builtins/*" = [
+  "A001",  # Builtin variable shadowing
+  "A004",  # Shadowing a Python builtin through import
+  "N801",  # Invalid class name (not CamelCase)
+]
+"src/**/__init__.py" = [
+  "F401",  # Imported but unused (false positive)
+  "F403",  # Unable to detect undefined names wiht `from ... import *`
+  "F405",  # Unable to detect (un)defined names due to `from ... import *`
 ]
 
 [lint.flake8-annotations]
