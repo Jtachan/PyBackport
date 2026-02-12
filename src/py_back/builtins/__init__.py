@@ -1,17 +1,26 @@
-"""Module to backport 'builtins' classes depending on the system python."""
+"""Module to backport 'builtins' classes depending on the system python.
+
+`py_back` allows using the `builtins` module just as the original.
+
+```pycon
+# Python version lower than 3.9
+>>> from py_back.builtins import str
+>>> my_string = str("Hello world!")
+>>> print(my_string.removesuffix("!"))
+Hello world
+```
+
+!!! Note
+    Python builtins don't require to be imported, but the backported builtins do not
+    follow this rule. This results in the inconvenience that backported instances must
+    be defined with the constructor provided by `py_back`, even if they interact with
+    other not backported builtins.
+"""
 
 import sys
-import warnings
-from builtins import *  # noqa: F403
+from builtins import *
 
-__all__ = [name for name in dir() if not name.startswith("_")]
+__all__ = ["str", "dict"] + list({name for name in dir() if not name.startswith("_")})
 
-if sys.version_info >= (3, 9):
-    warnings.warn(
-        "Importing from the standard builtins library: dict, str\n"
-        "Consider 'from builtins import ...' instead of 'from py_back.builtins "
-        "import ...'",
-        stacklevel=2,
-    )
-else:
-    from ._back_builtins import dict, str  # noqa: F401, A004
+if sys.version_info < (3, 9):
+    from ._back_builtins import dict, str

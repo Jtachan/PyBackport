@@ -54,7 +54,7 @@ plugins:
            show_bases: true
            show_source: false
            # Headings
-           heading_level: 1
+           heading_level: 2
            parameter_headings: true
            show_root_heading: true
            show_root_full_path: true
@@ -63,8 +63,8 @@ plugins:
            # Members
            inherited_members: false
            members_order: source
-           filters:
-             - "!^_.*$"
+#           filters:
+#             - "!^_.*$"
            group_by_category: true
            show_submodules: true
            # Docstrings
