@@ -8,7 +8,7 @@ nav:
       - Enum: "enum.md"
 
 theme:
-  name: material
+  name: readthedocs
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -61,7 +61,7 @@ plugins:
            show_root_members_full_path: false
            show_category_heading: false
            # Members
-           inherited_members: true
+           inherited_members: false
            members_order: source
            filters:
              - "!^_.*$"
