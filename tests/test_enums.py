@@ -1,9 +1,5 @@
 """Test the 'enums' module."""
 
-import sys
-
-import pytest
-
 
 def test_repr_enum():
     """Tests for enum representations.
